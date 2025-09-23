@@ -1,0 +1,16 @@
+# Virtualenv
+venv/
+env/
+
+# Arquivos Python
+*.pyc
+__pycache__/
+
+# Sistema / IDE / editor
+.vscode/
+.idea/
+
+# Configs do Django
+*.log
+*.pot
+*.py[cod]

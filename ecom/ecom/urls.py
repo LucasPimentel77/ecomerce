@@ -23,7 +23,8 @@ from ecom import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.visualizarHome, name='home'),
-    path('produtos/', include('produtos.urls'))
+    path('produtos/', include('produtos.urls')),
+    path('carrinho/', include('carrinho.urls')),
 ]
 
 if settings.DEBUG:

@@ -30,14 +30,18 @@
                 <div class="card-body">
                     
                     <ul class="list-menu">
-                    <li><a href="#">People  </a></li>
+                        <a href="{% url 'produtos' %}">Todas as categorias</a>
+                        {% for cat in cats %}
+                            <li><a href="{{cat.get_url}}">{{cat.categoria_nome}}</a></li>
+                        {% endfor %}
+                    <!-- <li><a href="#">People  </a></li>
                     <li><a href="#">Watches </a></li>
                     <li><a href="#">Cinema  </a></li>
                     <li><a href="#">Clothes  </a></li>
                     <li><a href="#">Home items </a></li>
                     <li><a href="#">Animals</a></li>
                     <li><a href="#">People </a></li>
-                    </ul>
+                    </ul> -->
 
                 </div> <!-- card-body.// -->
             </div>
@@ -136,7 +140,7 @@
                 <figure class="card card-product-grid">
                     <div class="img-wrap"> 
                         
-                        <a href="{{ produto.get_url }}"><img src="{{ produto.imagens.url }}"></a>
+                        <a href="{{ produto.get_url }}"><img src="{{ produto.imagem.url }}"></a>
                         
                     </div> <!-- img-wrap.// -->
                     <figcaption class="info-wrap">

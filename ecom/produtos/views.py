@@ -2,12 +2,12 @@ from django.shortcuts import get_object_or_404, render
 from categoria.models import Categoria
 from produtos.models import Produto
 
-def visualizarProdutos(request, slug=None):
+def visualizarProdutos(request, categoria_slug=None):
     categoria = None
     produtos = None
 
-    if slug != None:
-        categoria = get_object_or_404(Categoria, slug=slug)
+    if categoria_slug != None:
+        categoria = get_object_or_404(Categoria, slug=categoria_slug)
         produtos = Produto.objects.filter(categoria=categoria, esta_disponivel=True)
         produtos_quant = produtos.count()
     
@@ -20,3 +20,14 @@ def visualizarProdutos(request, slug=None):
         'produtos_quant': produtos_quant,
     }
     return render(request, 'produtos/produtos.html', contexto)
+
+def produtoDetalhe(request, categoria_slug, produto_slug):
+    try:
+        produto = Produto.objects.get(categoria__slug=categoria_slug, slug=produto_slug)
+    except Exception as e:
+        raise e
+
+    contexto = {
+        'produto': produto,
+    }
+    return render(request, 'produtos/produto_detalhe.html', contexto)

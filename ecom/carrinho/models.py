@@ -19,4 +19,4 @@ class ItemCarrinho(models.Model):
     ativo = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.produto
+        return self.produto.produto_nome
